@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Jun 25, 2021, 7:30:20 PM                    ---
+ * --- Generated at Jun 25, 2021, 8:18:26 PM                    ---
  * ----------------------------------------------------------------
  */
 package org.trainingbackoffice.constants;
