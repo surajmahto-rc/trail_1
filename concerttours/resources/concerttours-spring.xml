@@ -13,6 +13,17 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.1.xsd"
           >
+          
+          <!-- interceptors and custom events -->
+          <bean id="bandAlbumSalesInterceptor" class="concerttours.interceptors.BandAlbumSalesInterceptor" />
+<bean id="BandInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+  <property name="interceptor" ref="bandAlbumSalesInterceptor" />
+  <property name="typeCode" value="Band" />
+  </bean>
+  <bean id="bandAlbumSalesEventListener" class="concerttours.events.BandAlbumSalesEventListener" parent="abstractEventListener" >
+  <property name="modelService" ref="modelService" />
+  </bean>
+   <!--END interceptors and custom events -->
           <!-- Event and Listners -->
           <bean id="concerttourEventListener" class="concerttours.events.NewBandEventListener" parent="abstractEventListener">
   <property name="modelService" ref="modelService" />
