@@ -13,6 +13,11 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.1.xsd"
           >
+          <!-- Event and Listners -->
+          <bean id="concerttourEventListener" class="concerttours.events.NewBandEventListener" parent="abstractEventListener">
+  <property name="modelService" ref="modelService" />
+</bean>
+
           <!-- Service layer -->
   <context:component-scan base-package="concerttours"/>
  
