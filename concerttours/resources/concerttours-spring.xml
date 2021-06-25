@@ -13,6 +13,15 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.1.xsd"
           >
+       <!-- CRON JOBS -->
+          <alias name="defaultNewsService" alias="newsService" />
+<bean id="defaultNewsService" class="concerttours.service.impl.DefaultNewsService">
+    <property name="newsDAO" ref="newsDAO" />
+</bean>
+<bean id="sendNewsJob" class="concerttours.jobs.SendNewsJob" parent="abstractJobPerformable">
+    <property name="newsService" ref="newsService" />
+    <property name="configurationService" ref="configurationService" />
+</bean>
           
           <!-- interceptors and custom events -->
           <bean id="bandAlbumSalesInterceptor" class="concerttours.interceptors.BandAlbumSalesInterceptor" />
