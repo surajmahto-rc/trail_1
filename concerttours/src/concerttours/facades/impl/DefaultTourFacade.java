@@ -14,6 +14,7 @@ import concerttours.data.TourData;
 import concerttours.facades.TourFacade;
 import concerttours.model.ConcertModel;
 
+
 public class DefaultTourFacade implements TourFacade
 {
     private ProductService productService;
@@ -43,7 +44,9 @@ public class DefaultTourFacade implements TourFacade
                     summary.setId(concert.getCode());
                     summary.setDate(concert.getDate());
                     summary.setVenue(concert.getVenue());
-                    summary.setType(concert.getConcertType() == ConcertType.OPENAIR ? "Outdoors" : "Indoors");
+						  System.out.println(concert.getConcertType() + " ==> " + ConcertType.OPENAIR);
+						  // summary.setType((String) concert.getConcertType() == ConcertType.OPENAIR ? "Outdoors" : "Indoors");
+						  summary.setType("Outdoors&Indoor");
 						  summary.setCountDown(concert.getDaysUntil());
                     concerts.add(summary);
                 }
