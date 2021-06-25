@@ -34,7 +34,9 @@
 <bean id = "defaultTourFacade" class ="concerttours.facades.impl.DefaultTourFacade" >
     <property name = "productService" ref = "productService" />
 </bean>
-
+<!-- dynamic attribute -->
+<bean id="concertDaysUntilAttributeHandler" class="concerttours.attributehandlers.ConcertDaysUntilAttributeHandler"/>
+<!-- END dynamic attribute -->
  <!-- ******************************************************************* default code ******************************************************************* -->
     <bean id="concerttoursSystemSetup" class="concerttours.setup.ConcerttoursSystemSetup">
         <constructor-arg ref="concerttoursService"/>
