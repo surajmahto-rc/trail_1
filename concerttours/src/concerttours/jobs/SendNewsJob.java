@@ -6,13 +6,16 @@ import de.hybris.platform.servicelayer.config.ConfigurationService;
 import de.hybris.platform.servicelayer.cronjob.AbstractJobPerformable;
 import de.hybris.platform.servicelayer.cronjob.PerformResult;
 import de.hybris.platform.util.mail.MailUtils;
+
 import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
-import org.apache.commons.configuration.Configuration;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
+
 import concerttours.model.NewsModel;
 import concerttours.service.NewsService;
  
@@ -85,8 +88,8 @@ public class SendNewsJob extends AbstractJobPerformable<CronJobModel>
         // get mail service configuration
         final Email email = MailUtils.getPreConfiguredEmail();
         //send message
-        Configuration config = getConfigurationService().getConfiguration();
-        String recipient = config.getString("news_summary_mailing_address", null);
+        final Configuration config = getConfigurationService().getConfiguration();
+        final String recipient = config.getString("news_summary_mailing_address", null);
         email.addTo(recipient);
         email.setSubject(subject);
         email.setMsg(message);

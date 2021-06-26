@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
 
-import concerttours.constants.GeneratedConcerttoursConstants.Enumerations.ConcertType;
 import concerttours.data.ConcertSummaryData;
 import concerttours.data.TourData;
 import concerttours.facades.TourFacade;
@@ -44,7 +43,7 @@ public class DefaultTourFacade implements TourFacade
                     summary.setId(concert.getCode());
                     summary.setDate(concert.getDate());
                     summary.setVenue(concert.getVenue());
-						  System.out.println(concert.getConcertType() + " ==> " + ConcertType.OPENAIR);
+
 						  // summary.setType((String) concert.getConcertType() == ConcertType.OPENAIR ? "Outdoors" : "Indoors");
 						  summary.setType("Outdoors&Indoor");
 						  summary.setCountDown(concert.getDaysUntil());
