@@ -4,10 +4,12 @@ import de.hybris.platform.servicelayer.impex.ImportConfig;
 import de.hybris.platform.servicelayer.impex.ImportResult;
 import de.hybris.platform.servicelayer.impex.ImportService;
 import de.hybris.platform.servicelayer.impex.impl.StreamBasedImpExResource;
+
 import java.io.InputStream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
- 
+
 @SystemSetup(extension = "concerttours")
 public class ConcerttoursCustomSetup
 {
@@ -28,15 +30,28 @@ public class ConcerttoursCustomSetup
         LOG.info("Custom essential data loading for the Concerttours extension completed.");
         return true;
     }
+
+	 //    @SystemSetup(type = SystemSetup.Type.PROJECT)
+	 //    public boolean addMyProjectData()
+	 //    {
+	 //        LOG.info("Starting custom project data loading for the Concerttours extension");
+	 //        impexImport("/impex/concerttours-bands.impex");
+	 //        impexImport("/impex/concerttours-yBandTour.impex");
+	 //        LOG.info("Custom project data loading for the Concerttours extension completed.");
+	 //        return true;
+	 //    }
     @SystemSetup(type = SystemSetup.Type.PROJECT)
     public boolean addMyProjectData()
     {
-        LOG.info("Starting custom project data loading for the Concerttours extension");
-        impexImport("/impex/concerttours-bands.impex");
-        impexImport("/impex/concerttours-yBandTour.impex");
-        LOG.info("Custom project data loading for the Concerttours extension completed.");
-        return true;
+		 LOG.info("Starting custom project data loading for the Concerttours extension");
+		 impexImport("/impex/concerttours-bands.impex");
+		 impexImport("/impex/concerttours-bands-en.impex");
+		 impexImport("/impex/concerttours-bands-de.impex");
+		 impexImport("/impex/concerttours-yBandTour.impex");
+		 LOG.info("Custom project data loading for the Concerttours extension completed.");
+		 return true;
     }
+
     protected boolean impexImport(final String filename)
     {
         final String message = "Concerttours impexing [" + filename + "]...";

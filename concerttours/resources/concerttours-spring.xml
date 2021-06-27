@@ -14,14 +14,14 @@
            http://www.springframework.org/schema/context/spring-context-3.1.xsd"
           >
        <!-- CRON JOBS -->
-          <alias name="defaultNewsService" alias="newsService" />
+<!--           <alias name="defaultNewsService" alias="newsService" />
 <bean id="defaultNewsService" class="concerttours.service.impl.DefaultNewsService">
     <property name="newsDAO" ref="newsDAO" />
 </bean>
 <bean id="sendNewsJob" class="concerttours.jobs.SendNewsJob" parent="abstractJobPerformable">
     <property name="newsService" ref="newsService" />
     <property name="configurationService" ref="configurationService" />
-</bean>
+</bean> -->
           
           <!-- interceptors and custom events -->
           <bean id="bandAlbumSalesInterceptor" class="concerttours.interceptors.BandAlbumSalesInterceptor" />
@@ -50,11 +50,12 @@
   <property name="importService" ref="importService"/>
   </bean>
   
-  <alias name = "defaultBandFacade" alias = "bandFacade" />
+<alias name = "defaultBandFacade" alias = "bandFacade" />
 <bean id = "defaultBandFacade" class ="concerttours.facades.impl.DefaultBandFacade" >
     <property name = "bandService" ref = "bandService" />
+    <property name="mediaService" ref="mediaService"/>
+    <property name="configurationService" ref="configurationService" />
 </bean>
-
 <alias name = "defaultTourFacade" alias = "tourFacade" />
 <bean id = "defaultTourFacade" class ="concerttours.facades.impl.DefaultTourFacade" >
     <property name = "productService" ref = "productService" />
